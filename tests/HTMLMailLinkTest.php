@@ -20,8 +20,8 @@ class HTMLMailLinkTest extends TestCase
 	public function testMailLinkWithCustomValueAndOtherLinkAttributes()
 	{
 		$link = new HTMLMailLink( 'waughjai@gmail.com', [ "value" => "Send me an email.", "class" => "email-link" ] );
-		$this->assertContains( ' href="mailto:waughjai@gmail.com', $link->getHTML() );
-		$this->assertContains( ' class="email-link', $link->getHTML() );
+		$this->assertStringContainsString( ' href="mailto:waughjai@gmail.com', $link->getHTML() );
+		$this->assertStringContainsString( ' class="email-link', $link->getHTML() );
 		$this->assertThat( $link->getHTML(), $this->logicalNot( $this->stringContains( ' value="Send me an email."' ) ) );
 	}
 }
